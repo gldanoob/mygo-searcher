@@ -1,6 +1,10 @@
+import asyncio
 from searcher import SemanticSearcher
 
-if __name__ == '__main__':
+async def main():
     searcher = SemanticSearcher()
-    searcher.add_dataset(['why you play haruhikage', 'so what?', 'can i eat now'])
-    print(searcher.search('eat?'))
+    await searcher.add_sentences(['why you play haruhikage', 'so what?', 'can i eat now'])
+    print(await searcher.search('eat?', k=1))
+
+if __name__ == '__main__':
+    asyncio.run(main())
